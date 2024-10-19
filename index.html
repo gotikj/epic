@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Epic Stats: Instant player info for Discord">
+    <meta name="theme-color" content="#0d1117">
+    <title>Epic Stats - Discord Bot</title>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* Global Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif; /* Cool font */
+            background-color: #0d1117;
+            color: #ffffff;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        /* Fullscreen hero section */
+        .hero {
+            background-image: url('https://i.redd.it/eghbgrh7fm3d1.jpeg'); /* Xal'atath Wallpaper */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Overlay for content with a gradient background */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 40px;
+            backdrop-filter: blur(10px); /* Increased blur effect */
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.95)); /* Darker gradient from transparent to almost black */
+        }
+
+        /* Header section for logo and title container */
+        .header {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Logo styling */
+        .logo {
+            width: 35px; /* Reduced size further */
+            margin-right: 8px;
+        }
+
+        /* Title styling */
+        .title {
+            font-size: 1.3rem; /* Further reduced size */
+            font-weight: 900;
+            color: #ffffff; /* Changed to white */
+            text-transform: uppercase;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Add a shadow for depth */
+        }
+
+        /* Catchy phrase styling */
+        .catchy {
+            font-size: 2.5rem; /* Reduced size for better balance */
+            font-weight: 800;
+            margin-top: 200px; /* Increased margin for more spacing */
+            line-height: 1.2;
+            text-transform: uppercase; /* All caps */
+            color: #ffffff; /* Make text color white */
+        }
+
+        .highlight {
+            font-size: 3rem; /* Slightly reduced size for bot name */
+            background: linear-gradient(90deg, #5e3e8b, #8b69a5); /* Matching gradient for EPIC STATS */
+            -webkit-background-clip: text; /* Clip background to text */
+            background-clip: text; /* For non-webkit browsers */
+            color: transparent; /* Make text color transparent for gradient effect */
+        }
+
+        /* Add spacing below the highlight text */
+        .spacing {
+            margin: 15px 0; /* Adjust spacing as needed */
+        }
+
+        /* Subheading for stats */
+        .stats {
+            font-size: 1rem; /* Reduced size for the stats */
+            font-weight: 500;
+            margin-top: 20px; /* Increased margin for better spacing */
+            color: #f0f0f0;
+            line-height: 1.5; /* Increase line height for better readability */
+        }
+
+        /* New Call-to-action button style */
+        .cta-button {
+            background-color: #5e3e8b; /* Solid dark purple color */
+            color: #ffffff; /* White text */
+            padding: 12px 30px; /* Padding for button */
+            text-decoration: none; /* No underline */
+            border-radius: 5px; /* Slightly rounded corners */
+            font-weight: bold; /* Bold text */
+            margin-top: 30px; /* Space above the button */
+            font-size: 1rem; /* Font size */
+            border: none; /* No border */
+            display: flex; /* Flex display to center icon and text */
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            cursor: pointer; /* Pointer cursor on hover */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Light shadow for depth */
+        }
+
+        /* Icon in the button */
+        .cta-button i {
+            margin-right: 8px; /* Space between icon and text */
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 1.2rem; /* Smaller for mobile */
+            }
+
+            .catchy {
+                font-size: 2rem; /* Smaller for mobile */
+            }
+
+            .cta-button {
+                padding: 10px 20px; /* Adjust padding for mobile */
+                font-size: 0.9rem; /* Adjust font size for mobile */
+            }
+
+            .stats {
+                font-size: 0.9rem; /* Responsive font size for stats */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section with Background Image -->
+    <div class="hero"></div>
+
+    <!-- Overlay for content -->
+    <div class="overlay">
+        <!-- Header with logo and title at the top -->
+        <div class="header">
+            <img src="https://i.imgur.com/x1kGgxU.png" alt="Epic Stats Logo" class="logo">
+            <h1 class="title">Epic Stats</h1>
+        </div>
+
+        <!-- Catchy phrase in large, bold text -->
+        <div class="catchy">
+            <span>Power at your fingertips</span><br>
+            WITH <span class="highlight">EPIC STATS</span>!
+        </div>
+
+        <!-- Add spacing for better readability -->
+        <div class="spacing"></div>
+
+        <!-- Stats example -->
+        <div class="stats">
+            Serving millions of players across thousands of servers.
+        </div>
+
+        <!-- Call-to-action button to invite the bot -->
+        <a href="#invite" class="cta-button">
+            <i class="fas fa-plus"></i> Get Epic Stats
+        </a>
+    </div>
+
+</body>
+</html>
