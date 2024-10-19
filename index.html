@@ -7,7 +7,6 @@
     <meta name="theme-color" content="#0d1117">
     <title>Epic Stats - Discord Bot</title>
 
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
@@ -15,22 +14,20 @@
         body, html {
             margin: 0;
             padding: 0;
-            font-family: 'Poppins', sans-serif; /* Cool font */
+            font-family: 'Poppins', sans-serif;
             background-color: #0d1117;
             color: #ffffff;
-            overflow: hidden; /* Prevent scrolling */
+            overflow: hidden;
         }
 
-        /* Fullscreen hero section */
         .hero {
-            background-image: url('https://i.redd.it/eghbgrh7fm3d1.jpeg'); /* Xal'atath Wallpaper */
+            background-image: url('https://i.redd.it/eghbgrh7fm3d1.jpeg');
             background-size: cover;
             background-position: center;
             height: 100vh;
             position: relative;
         }
 
-        /* Overlay for content with a gradient background */
         .overlay {
             position: absolute;
             top: 0;
@@ -42,136 +39,154 @@
             justify-content: flex-start;
             align-items: flex-start;
             padding: 40px;
-            backdrop-filter: blur(10px); /* Increased blur effect */
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.95)); /* Darker gradient from transparent to almost black */
+            backdrop-filter: blur(10px);
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.95));
         }
 
-        /* Header section for logo and title container */
         .header {
             display: flex;
             align-items: center;
         }
 
-        /* Logo styling */
         .logo {
-            width: 35px; /* Reduced size further */
+            width: 35px;
             margin-right: 8px;
         }
 
-        /* Title styling */
         .title {
-            font-size: 1.3rem; /* Further reduced size */
+            font-size: 1.3rem;
             font-weight: 900;
-            color: #ffffff; /* Changed to white */
+            color: #ffffff;
             text-transform: uppercase;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Add a shadow for depth */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        /* Catchy phrase styling */
         .catchy {
-            font-size: 2.5rem; /* Reduced size for better balance */
+            font-size: 2.5rem;
             font-weight: 800;
-            margin-top: 200px; /* Increased margin for more spacing */
+            margin-top: 200px;
             line-height: 1.2;
-            text-transform: uppercase; /* All caps */
-            color: #ffffff; /* Make text color white */
+            text-transform: uppercase;
+            color: #ffffff;
         }
 
         .highlight {
-            font-size: 3rem; /* Slightly reduced size for bot name */
-            background: linear-gradient(90deg, #5e3e8b, #8b69a5); /* Matching gradient for EPIC STATS */
-            -webkit-background-clip: text; /* Clip background to text */
-            background-clip: text; /* For non-webkit browsers */
-            color: transparent; /* Make text color transparent for gradient effect */
+            font-size: 3rem;
+            background: linear-gradient(90deg, #5e3e8b, #8b69a5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
-        /* Add spacing below the highlight text */
         .spacing {
-            margin: 15px 0; /* Adjust spacing as needed */
+            margin: 15px 0;
         }
 
-        /* Subheading for stats */
         .stats {
-            font-size: 1rem; /* Reduced size for the stats */
+            font-size: 1rem;
             font-weight: 500;
-            margin-top: 20px; /* Increased margin for better spacing */
+            margin-top: 20px;
             color: #f0f0f0;
-            line-height: 1.5; /* Increase line height for better readability */
+            line-height: 1.5;
         }
 
-        /* New Call-to-action button style */
         .cta-button {
-            background-color: #5e3e8b; /* Solid dark purple color */
-            color: #ffffff; /* White text */
-            padding: 12px 30px; /* Padding for button */
-            text-decoration: none; /* No underline */
-            border-radius: 5px; /* Slightly rounded corners */
-            font-weight: bold; /* Bold text */
-            margin-top: 30px; /* Space above the button */
-            font-size: 1rem; /* Font size */
-            border: none; /* No border */
-            display: flex; /* Flex display to center icon and text */
-            align-items: center; /* Center vertically */
-            justify-content: center; /* Center horizontally */
-            cursor: pointer; /* Pointer cursor on hover */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Light shadow for depth */
+            background-color: #5e3e8b;
+            color: #ffffff;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 30px;
+            font-size: 1rem;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        /* Icon in the button */
         .cta-button i {
-            margin-right: 8px; /* Space between icon and text */
+            margin-right: 8px;
+        }
+
+        /* Discord Button Styles */
+        .discord-button {
+            background-color: #5e3e8b; /* Match CTA color */
+            color: #ffffff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            position: absolute;
+            top: 20px; /* Adjust as needed */
+            right: 100px; /* Moved left for visibility */
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .discord-button:hover {
+            background-color: #4a2d5f; /* Darker shade for hover effect */
+        }
+
+        .discord-button i {
+            margin-right: 5px; /* Space between icon and text */
         }
 
         /* Responsive styling */
         @media (max-width: 768px) {
             .title {
-                font-size: 1.2rem; /* Smaller for mobile */
+                font-size: 1.2rem;
             }
 
             .catchy {
-                font-size: 2rem; /* Smaller for mobile */
+                font-size: 2rem;
             }
 
             .cta-button {
-                padding: 10px 20px; /* Adjust padding for mobile */
-                font-size: 0.9rem; /* Adjust font size for mobile */
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .discord-button {
+                padding: 8px 12px; /* Smaller padding for mobile */
+                font-size: 0.9rem; /* Responsive font size */
             }
 
             .stats {
-                font-size: 0.9rem; /* Responsive font size for stats */
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Hero Section with Background Image -->
     <div class="hero"></div>
 
-    <!-- Overlay for content -->
     <div class="overlay">
-        <!-- Header with logo and title at the top -->
         <div class="header">
             <img src="https://i.imgur.com/x1kGgxU.png" alt="Epic Stats Logo" class="logo">
             <h1 class="title">Epic Stats</h1>
         </div>
 
-        <!-- Catchy phrase in large, bold text -->
         <div class="catchy">
             <span>Power at your fingertips</span><br>
             WITH <span class="highlight">EPIC STATS</span>!
         </div>
 
-        <!-- Add spacing for better readability -->
         <div class="spacing"></div>
 
-        <!-- Stats example -->
         <div class="stats">
             Serving millions of players across thousands of servers.
         </div>
 
-        <!-- Call-to-action button to invite the bot -->
-        <a href="#invite" class="cta-button">
+        <!-- Discord Help Section -->
+        <a href="https://discord.gg/hfSMMrcTZJ" class="discord-button">
+            <i class="fab fa-discord"></i> Support server
+        </a>
+
+        <a href="https://discord.com/oauth2/authorize?client_id=1296520005453877308" class="cta-button">
             <i class="fas fa-plus"></i> Get Epic Stats
         </a>
     </div>
