@@ -8,6 +8,7 @@
     <title>Epic Stats - Discord Bot</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
 
     <style>
         /* Global Styles */
@@ -15,184 +16,122 @@
             margin: 0;
             padding: 0;
             font-family: 'Poppins', sans-serif;
-            background-color: #0d1117;
-            color: #ffffff;
-            overflow: hidden;
-        }
-
-        .hero {
-            background-image: url('https://wow.zamimg.com/uploads/screenshots/normal/1182979.jpg');
-            background-size: cover;
-            background-position: center;
             height: 100vh;
+            width: 100vw; /* Ensure full width */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
             position: relative;
+            color: #ffffff; /* White text */
+            background-color: #0d1117; /* Dark background color */
         }
 
-        .overlay {
+        .particles-js {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
-            padding: 40px;
-            backdrop-filter: blur(10px);
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.95));
-        }
-
-        .header {
-            display: flex;
-            align-items: center;
+            z-index: 1; /* Behind the content */
         }
 
         .logo {
-            width: 35px;
-            margin-right: 8px;
+            width: 80px; /* Adjusted size for minimalism */
+            margin-bottom: 20px;
+            position: relative; /* Ensure it's on top of particles */
+            z-index: 2; /* Higher z-index to bring to the front */
         }
 
-        .title {
-            font-size: 1.3rem;
-            font-weight: 900;
-            color: #ffffff;
-            text-transform: uppercase;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .catchy {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-top: 200px;
-            line-height: 1.2;
-            text-transform: uppercase;
-            color: #ffffff;
-        }
-
-        .highlight {
-            font-size: 3rem;
-            background: linear-gradient(90deg, #5e3e8b, #8b69a5);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .spacing {
-            margin: 15px 0;
-        }
-
-        .stats {
-            font-size: 1rem;
-            font-weight: 500;
-            margin-top: 20px;
-            color: #f0f0f0;
-            line-height: 1.5;
-        }
-
-        .cta-button {
-            background-color: #5e3e8b;
-            color: #ffffff;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 30px;
-            font-size: 1rem;
-            border: none;
+        .button-container {
             display: flex;
+            gap: 20px; /* Space between buttons */
+            justify-content: center; /* Center buttons horizontally */
+            position: relative; /* Ensure buttons are on top of particles */
+            z-index: 2; /* Higher z-index to bring to the front */
+        }
+
+        .button {
+            background-color: #d3af37; /* Gold color matching WoW style */
+            color: #1e1e1e; /* Dark text for contrast */
+            padding: 10px 15px; /* Reduced padding for a slimmer button */
+            text-decoration: none;
+            border-radius: 8px; /* Slightly larger border radius */
+            font-weight: bold;
+            font-size: 1rem;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Soft shadow */
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+            position: relative; /* For animation */
         }
 
-        .cta-button:hover {
-            background-color: #4a2d5f; /* Darker shade for hover effect */
+        .button:hover {
+            transform: translateY(-4px) scale(1.05); /* Slight lift and scale effect */
+            background-color: #c19a2d; /* Darker gold on hover */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); /* Deeper shadow on hover */
         }
 
-        .cta-button i {
-            margin-right: 8px;
-        }
-
-        /* Discord Button Styles */
-        .discord-button {
-            background-color: #5e3e8b; /* Match CTA color */
-            color: #ffffff;
-            padding: 10px 15px;
-            border-radius: 5px;
-            position: absolute;
-            top: 20px; /* Adjust as needed */
-            right: 100px; /* Moved left for visibility */
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s; /* Added transition for smooth effect */
-        }
-
-        .discord-button:hover {
-            background-color: #4a2d5f; /* Darker shade for hover effect */
-        }
-
-        .discord-button i {
-            margin-right: 5px; /* Space between icon and text */
-        }
-
-        /* Responsive styling */
-        @media (max-width: 768px) {
-            .title {
-                font-size: 1.2rem;
-            }
-
-            .catchy {
-                font-size: 2rem;
-            }
-
-            .cta-button {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-
-            .discord-button {
-                padding: 8px 12px; /* Smaller padding for mobile */
-                font-size: 0.9rem; /* Responsive font size */
-            }
-
-            .stats {
-                font-size: 0.9rem;
-            }
+        .button i {
+            margin-right: 5px;
         }
     </style>
 </head>
 <body>
 
-    <div class="hero"></div>
+    <div id="particles-js" class="particles-js"></div> <!-- Particles.js container -->
 
-    <div class="overlay">
-        <div class="header">
-            <img src="https://i.imgur.com/x1kGgxU.png" alt="Epic Stats Logo" class="logo">
-            <h1 class="title">Epic Stats</h1>
+    <div>
+        <img src="https://i.imgur.com/x1kGgxU.png" alt="Epic Stats Logo" class="logo">
+
+        <div class="button-container">
+            <a href="https://discord.gg/hfSMMrcTZJ" class="button" aria-label="Join our Discord Support server">
+                <i class="fab fa-discord"></i> Support Server
+            </a>
+
+            <a href="https://discord.com/oauth2/authorize?client_id=1296520005453877308" class="button" aria-label="Get Epic Stats">
+                <i class="fas fa-plus"></i> Get Epic Stats
+            </a>
         </div>
-
-        <div class="catchy">
-            <span>Power at your fingertips</span><br>
-            WITH <span class="highlight">EPIC STATS</span>!
-        </div>
-
-        <div class="spacing"></div>
-
-
-        <!-- Discord Help Section -->
-        <a href="https://discord.gg/hfSMMrcTZJ" class="discord-button">
-            <i class="fab fa-discord"></i> Support server
-        </a>
-
-        <a href="https://discord.com/oauth2/authorize?client_id=1296520005453877308" class="cta-button">
-            <i class="fas fa-plus"></i> Get Epic Stats
-        </a>
     </div>
+
+    <script>
+        // Particles.js configuration
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 200, density: { enable: false } }, // Disable density so particles can spread across the screen
+                color: { value: "#d3af37" }, // Gold color for particles
+                shape: {
+                    type: "circle",
+                    stroke: { width: 0, color: "#000000" },
+                    polygon: { nb_sides: 5 },
+                },
+                opacity: { value: 0.5, random: false, anim: { enable: false } },
+                size: { value: 5, random: true, anim: { enable: false } },
+                line_linked: { enable: true, distance: 150, color: "#d3af37", opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 6, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                },
+                modes: {
+                    grab: { distance: 400, line_linked: { opacity: 1 } },
+                    bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
+                    repulse: { distance: 200, duration: 0.4 },
+                    push: { particles_nb: 4 },
+                    remove: { particles_nb: 2 }
+                }
+            },
+            retina_detect: true
+        });
+    </script>
 
 </body>
 </html>
